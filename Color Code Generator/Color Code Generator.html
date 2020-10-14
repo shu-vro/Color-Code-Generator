@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Code Generator</title>
+    <link rel="stylesheet" href="Color Code Generator.css">
+</head>
+<body>
+    <!-- Choice -->
+    <div class="cover">
+        <div class="start_menu">
+            <h1>Welcome To Color Picker</h1>
+            <select name="code" id="color_code_chooser">
+                <option hidden>Choose Color Code</option>
+                <option value="HEX">HEX</option>
+                <option value="HEXa">HEXa</option>
+                <option value="RGB">RGB</option>
+                <option value="RGBA">RGBA</option>
+                <option value="HSL">HSL</option>
+                <option value="HSLA">HSLA</option>
+            </select>
+        </div>
+        <div class="animation one"></div>
+        <div class="animation two"></div>
+    </div>
+    <!-- Navigation Bar -->
+    <nav class="navigation">
+        <label>
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </label>
+    </nav>
+    <!-- Main -->
+    <div class="main">
+        <div class="box">
+            <input type="text" name="Color Code Generator" id="output" readonly value="Pick Mode From Navigation">
+            <img src="copy.png" alt="copy" class="copy" onclick="copyColor()">
+            <!-- <button class="getColor">Get Hex Code</button> -->
+        </div>
+    </div>
+    <div id="alertBox"></div>
+    <script src="Color Code Generator.js"></script>
+</body>
+</html>
