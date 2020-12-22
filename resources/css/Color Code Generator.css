@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+/* Main area */
+body{
+    background: repeating-linear-gradient(0deg, #ffffff 0%, #ffffff 50%, #000000 50%, #000000 100%), repeating-linear-gradient(90deg, #ffffff 0%, #ffffff 50%, #000000 50%, #000000 100%);
+    background-size: 30px 30px;
+    background-blend-mode: difference;
+}
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.main .box {
+    position: relative;
+    width: 350px;
+    height: 450px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main .box #output {
+    width: 290px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    box-shadow: 4px 4px 7px #000000;
+    padding: 0 5px;
+    border-radius: 8px;
+    outline: none;
+    text-align: center;
+}
+
+.main .box .copy {
+    margin: 10px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.main .box .getColor {
+    position: absolute;
+    bottom: 100px;
+    width: 248.53px;
+    height: 54px;
+    font-size: 25px;
+    border: none;
+    outline: none;
+    background: linear-gradient(90deg, #ff2f00, #8114db);
+    padding: 12px 0;
+    border-radius: 400px;
+    color: white;
+    font-size: 500;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+/* Navigation bars. */
+.navigation {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;
+    background: radial-gradient(rgba(185, 85, 39, 0.658), rgb(0, 140, 255));
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.navigation label {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.navigation label .bar1,
+.navigation label .bar2,
+.navigation label .bar3 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 45px;
+    height: 8px;
+    background: white;
+    border-radius: 50px;
+    transition: .5s;
+}
+
+.navigation label .bar1 {
+    transform: translate(-50%, -50%);
+}
+
+.navigation label .bar2 {
+    transform: translate(-50%, calc(-50% - 15px));
+}
+
+.navigation label .bar3 {
+    transform: translate(-50%, calc(-50% + 15px));
+}
+
+.navigation.checked label .bar1 {
+    left: 0;
+    width: 0;
+}
+
+.navigation.checked label .bar2 {
+    transform: translate(-50%, 0) rotate(45deg);
+}
+
+.navigation.checked label .bar3 {
+    transform: translate(-50%, 0) rotate(-45deg);
+}
+
+
+
+.cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1000;
+    /* background: rgba(0, 0, 0, 0.534); */
+    opacity: 0;
+    transition: 1s ease-in-out;
+}
+
+.cover.selectMode {
+    z-index: 10000;
+    opacity: 1;
+    height: 100vh;
+    display: flex;
+}
+.selectMode .animation{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transition: 1s;
+    z-index: -1;
+    mix-blend-mode: color;
+}
+.selectMode .animation.one{
+    background: #006eff;
+    clip-path: circle(100% at 0 100%);
+    animation: animation_one 2s ease-in-out 0s 1;
+}
+.selectMode .animation.two{
+    background: orangered;
+    clip-path: circle(100% at 100% 0);
+    animation: animation_two 2s ease-in-out 0s 1;
+}
+@keyframes animation_one {
+    0%{
+        clip-path: circle(0% at 0 100%);
+    }
+    100%{
+        clip-path: circle(100% at 0 100%);
+    }
+}
+@keyframes animation_two {
+    0%{
+        clip-path: circle(0% at 100% 0);
+    }
+    100%{
+        clip-path: circle(100% at 100% 0);
+    }
+}
+
+.cover .start_menu {
+    position: relative;
+    width: 80%;
+    height: 65%;
+    background: linear-gradient(45deg, red, orangered, orange, gold, lime, aqua, blue, indigo, violet) no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 1s;
+}
+
+.cover .start_menu h1 {
+    color: rgb(255, 255, 255);
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: 'Harrington', sans-serif;
+}
+
+#color_code_chooser,
+option {
+    padding: 12px 30px;
+    font-size: 20px;
+    font-weight: bolder;
+    border: 3px solid saddlebrown;
+    text-align: center;
+    outline: none;
+}
+
+#alertBox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    z-index: -10000;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+    text-align: center;
+    font-size: 5em;
+    color: white;
+    font-weight: bolder;
+    transform: scale(0);
+}
+#alertBox.alertNow {
+    opacity: 1;
+    z-index: 10000;
+    transform: scale(1);
+}
+
+.plugin {
+    position: relative;
+}
+
+.plugin {
+    text-decoration: none;
+    padding: 12px 30px;
+    background: blue;
+    color: white;
+    font-size: 20px;
+    border-radius: 100px;
+}
+
+/* Styles */
+.ripples{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    background: #ffffff;
+    border-radius: 50%;
+    animation: ripples 1s linear 0s infinite;
+}
+@keyframes ripples {
+    0%{
+        width: 0;
+        height: 0;
+        opacity: 0.5;
+    }
+    100%{
+        width: 500px;
+        height: 500px;
+        opacity: 0;
+    }
+}
